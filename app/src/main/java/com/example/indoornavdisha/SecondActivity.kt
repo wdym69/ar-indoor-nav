@@ -207,9 +207,17 @@ class SecondActivity : AppCompatActivity() {
                         WaypointStorage.waypoints = waypointsResponse.waypoints
                     }
 
-                    val formattedWaypoints = waypointsResponse?.waypoints?.joinToString("\n") { waypoint ->
-                        "Waypoint ${waypoint.waypoint_id}: (${waypoint.x}, ${waypoint.y}, ${waypoint.z})"
-                    } ?: "No waypoints returned."
+//                    val formattedWaypoints = waypointsResponse?.waypoints?.joinToString("\n") { waypoint ->
+//                        "Waypoint ${waypoint.waypoint_id}: (${waypoint.x}, ${waypoint.y}, ${waypoint.z})"
+//                    } ?: "No waypoints returned."
+
+                    val formattedWaypoints = if (WaypointStorage.waypoints.isNotEmpty()) {
+                        WaypointStorage.waypoints.joinToString("\n") { waypoint ->
+                            "Waypoint ${waypoint.waypoint_id}: (${waypoint.x}, ${waypoint.y}, ${waypoint.z})"
+                        }
+                    } else {
+                        "No waypoints returned."
+                    }
 
                     resultText.text = "Upload successful!\n\nWaypoints:\n$formattedWaypoints"
                     uploadButton.text = "Select Another Image"
