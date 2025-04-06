@@ -33,6 +33,7 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.util.concurrent.TimeUnit
+import com.example.indoornavdisha.WaypointStorage
 
 // Data model for a waypoint response
 // Each waypoint has an ID and x, y, z coordinates
@@ -66,7 +67,7 @@ interface ApiService {
                 .build()
 
             return Retrofit.Builder()
-                .baseUrl("http://192.168.0.105:5000/") // Use this for Android emulator (localhost equivalent)
+                .baseUrl("http://192.168.0.102:5000/") // Use this for Android emulator (localhost equivalent)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create()) // Convert JSON response to data classes
                 .build()
@@ -200,6 +201,12 @@ class SecondActivity : AppCompatActivity() {
                 val response = apiService.uploadImage(body)
                 if (response.isSuccessful) {
                     val waypointsResponse = response.body()
+
+                    // Store waypoints in the global object
+                    if (waypointsResponse != null) {
+                        WaypointStorage.waypoints = waypointsResponse.waypoints
+                    }
+
                     val formattedWaypoints = waypointsResponse?.waypoints?.joinToString("\n") { waypoint ->
                         "Waypoint ${waypoint.waypoint_id}: (${waypoint.x}, ${waypoint.y}, ${waypoint.z})"
                     } ?: "No waypoints returned."
@@ -208,6 +215,7 @@ class SecondActivity : AppCompatActivity() {
                     uploadButton.text = "Select Another Image"
                     uploadButton.isEnabled = true
                     uploadButton.setOnClickListener { checkPermissionAndPickImage() }
+
                 } else {
                     resultText.text = "Error: ${response.code()} - ${response.message()}"
                     uploadButton.text = "Retry Upload"

@@ -124,6 +124,8 @@ import io.github.sceneview.ar.node.AnchorNode
 import io.github.sceneview.math.Position
 import io.github.sceneview.math.Scale
 import io.github.sceneview.loaders.ModelLoader
+import com.example.indoornavdisha.WaypointStorage
+
 
 class MainActivity : AppCompatActivity() {
 
