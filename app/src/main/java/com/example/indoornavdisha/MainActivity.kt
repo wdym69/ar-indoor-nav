@@ -115,36 +115,36 @@
 //    }
 //
 //    // Perform a hit test to detect what's under the user's finger
-////    private fun performHitTest(x: Float, y: Float) {
-////        // Get the current AR frame from SceneView
-////        val arFrame = arSceneView.frame
-////
-////        if (arFrame != null) {
-////            // Perform a hit test at the tap location
-////            val hitResults = arFrame.hitTest(x, y)
-////
-////            // Process hit results
-////            processHitResults(hitResults)
-////        }
-////    }
+//    private fun performHitTest(x: Float, y: Float) {
+//        // Get the current AR frame from SceneView
+//        val arFrame = arSceneView.frame
+//
+//        if (arFrame != null) {
+//            // Perform a hit test at the tap location
+//            val hitResults = arFrame.hitTest(x, y)
+//
+//            // Process hit results
+//            processHitResults(hitResults)
+//        }
+//    }
 //
 //    // Process the hit test results to find suitable surfaces
-////    private fun processHitResults(hitResults: List<HitResult>) {
-////        // Find the first hit result that is on a plane
-////        val planeHitResult = hitResults.firstOrNull { hit ->
-////            val trackable = hit.trackable
-////            // Only select hits that are on detected planes
-////            trackable is Plane && trackable.isPoseInPolygon(hit.hitPose)
-////        }
-////
-////        // If we found a valid hit on a plane, place a marker there
-////        if (planeHitResult != null) {
-////            placeMarkerAtHit(planeHitResult)
-////        } else {
-////            // If no plane was hit, inform the user
-////            Toast.makeText(this, "Please tap on a detected surface", Toast.LENGTH_SHORT).show()
-////        }
-////    }
+//    private fun processHitResults(hitResults: List<HitResult>) {
+//        // Find the first hit result that is on a plane
+//        val planeHitResult = hitResults.firstOrNull { hit ->
+//            val trackable = hit.trackable
+//            // Only select hits that are on detected planes
+//            trackable is Plane && trackable.isPoseInPolygon(hit.hitPose)
+//        }
+//
+//        // If we found a valid hit on a plane, place a marker there
+//        if (planeHitResult != null) {
+//            placeMarkerAtHit(planeHitResult)
+//        } else {
+//            // If no plane was hit, inform the user
+//            Toast.makeText(this, "Please tap on a detected surface", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 //
 //    // Place a marker at the hit location
 //    // Place a marker at the hit location
@@ -301,9 +301,18 @@ class MainActivity : AppCompatActivity() {
 
     // Hardcoded waypoints (modify these coordinates as needed)
     private val hardcodedWaypoints = listOf(
-        Waypoint(1, 0f, 0.5f, -1f),
-        Waypoint(2, 1f, 0.5f, -2f),
-        Waypoint(3, -1f, 0.5f, -3f)
+        Waypoint(0, 1.50f, 0.5f, 6.5f),
+        Waypoint(1, 1.00f, 0.0f, 7.0f),
+        Waypoint(2, 0.50f, 0.0f, 7.5f),
+        Waypoint(3, 0.00f, -0.5f, 8.0f),
+        Waypoint(4, -0.50f, -1.0f, 8.5f),
+        Waypoint(5, -0.50f, -1.0f, 9.0f),
+        Waypoint(6, -1.00f, -1.5f, 9.5f),
+        Waypoint(7, -1.50f, -2.0f, 10.0f),
+        Waypoint(8, -1.50f, -1.5f, 10.5f),
+        Waypoint(9, -1.00f, -1.5f, 11.0f),
+        Waypoint(10, -0.50f, -1.0f, 11.5f),
+        Waypoint(11, -1.00f, -1.0f, 12.0f)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
