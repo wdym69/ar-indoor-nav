@@ -1,3 +1,4 @@
+
 package com.example.indoornavdisha
 
 import android.Manifest
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     // Keep track of placed markers so we only place once
     private val placedMarkers = mutableListOf<AnchorNode>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
